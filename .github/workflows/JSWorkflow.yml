@@ -10,25 +10,27 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
-
+   build:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v4
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - name: Installing the necessery files
-    - run: npm install
-    - name: starting the application
-    - run: npm start
-    - name: testing the app
-    - run: npm test
+
+    - name: Installing the necessary files
+      run: npm install
+
+    - name: Starting the application
+      run: npm start
+
+    - name: Testing the app
+      run: npm test
